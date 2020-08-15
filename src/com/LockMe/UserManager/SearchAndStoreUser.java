@@ -108,7 +108,7 @@ class SearchAndStoreUser {
 
 	}
 
-	private static int removeUser(String email, boolean removerFromUserData, boolean removerFromLoginData) {
+	public static int removeUser(String email, boolean removerFromUserData, boolean removerFromLoginData) {
 		Path userFile = Paths.get(USER_DETAILS_FILENAME);
 		Path loginFile = Paths.get(UNAME_AND_PWORD_FILENAME);
 		BufferedWriter userOutput = null;
@@ -116,27 +116,36 @@ class SearchAndStoreUser {
 		try {
 			List<String> loginData1 = Files.readAllLines(loginFile);
 			List<String> userData1 = Files.readAllLines(userFile);
+			Files.delete(loginFile);
+			Files.delete(userFile);
+			Files.createFile(userFile);
+			Files.createFile(loginFile);
 			userOutput = Files.newBufferedWriter(userFile, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
 			loginOutput = Files.newBufferedWriter(loginFile,StandardCharsets.UTF_8, StandardOpenOption.APPEND);
 			if(removerFromLoginData) {
 				for(String a: loginData1) {
 					if(a.split(",")[0].equals(email))
 						continue;
-					else 
+					else  {
 						loginOutput.write(a);
+						loginOutput.newLine();
 				}
 			}	
-			
+			}	
 			if(removerFromUserData) {
 				for(String a: userData1) {
-					if(a.split(",")[3].equals(email))
+					if(a.split(",")[2].equals(email))
 						continue;
-					else 
+					else  {
 						userOutput.write(a);
+						userOutput.newLine();
 				}
-			}	
+			}
+			System.out.println("user " + email + "has been deleted from file system");
+			}
+			Files.deleteIfExists(Paths.get((USER_DATA_PATH + email.split("@")[0]+"_storedPasswords.txt")));
 			return 0;
-		} catch (IOException e) {
+		}catch (IOException e) {
 			return -1;
 		}finally {
 			try {

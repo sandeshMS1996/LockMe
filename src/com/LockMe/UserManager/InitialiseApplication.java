@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import static com.LockMe.UserManager.UserDefaults.*;
 
-public final class InitialiseApplication  {
+public final class InitialiseApplication   {
 	private static boolean isFirstRun = true;
 	private static String welcomeString = ""; 
 	static {
@@ -25,6 +25,15 @@ public final class InitialiseApplication  {
 			} catch (IOException e) {
 				fileOperationError(e);
 			}
+		}
+		loginFile = Paths.get(USER_DATA_PATH);
+		if(Files.notExists(loginFile)) {
+			try {
+				Files.createDirectory(loginFile);
+			} catch (IOException e) {
+				fileOperationError(e);
+			}
+			
 		}
 	}
 	

@@ -10,6 +10,7 @@ import com.LockMe.DataManager.FileOperations;
 import com.LockMe.UserManager.LoginData;
 import com.LockMe.UserManager.UserRegistractionAndLogin;
 
+
 public class DataOperations {
 	public static int LoginOperations(Scanner scanner)  {
 		System.out.println("please login");
@@ -30,10 +31,11 @@ public class DataOperations {
 						System.out.println("2. Search stored password");
 						System.out.println("3. Display all password");
 						System.out.println("4. Logoff and return to main menu");
-						System.out.println("5. Logoff Exit Application");	
+						System.out.println("5. Delet My account");
+						System.out.println("6. Logoff Exit Application");	
 						int ch = acceptInputAsInt(scanner);
 						while(true) {
-							if(ch < 0 || ch > 5) {
+							if(ch < 0 || ch > 6) {
 								System.out.println("please enter correct Choice\n");
 								ch = acceptInputAsInt(scanner);
 							}	
@@ -59,7 +61,7 @@ public class DataOperations {
 							System.out.println("Matching Website found ");
 							System.out.println(vals[0] + "->");
 							System.out.println("\tUsername: " + vals[1] + "\n\tPassword: " + vals[2]);
-							break;
+							//break;
 						}
 						else matches.add(vals[0]);
 					}
@@ -92,7 +94,11 @@ public class DataOperations {
 					UserRegistractionAndLogin.logoff(data);
 					return 3;
 				}
-				case 5 : {
+				case 5: {
+					UserRegistractionAndLogin.deleteAccount(data);
+					return 0;
+				}
+				case 6 : {
 					UserRegistractionAndLogin.logoff(data);
 					System.out.println("Bye..");
 					scanner.close();

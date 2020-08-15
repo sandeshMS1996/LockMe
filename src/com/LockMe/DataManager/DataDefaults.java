@@ -8,6 +8,9 @@ import java.util.Scanner;
 public interface DataDefaults {
 	String USER_DATA_PATH = "AppData//";
 	
+	String UNAME_AND_PWORD_FILENAME =  "secure.txt";
+	
+	
 	boolean DEBUG = true;
 	
 	public static Map<String, Map<String, String>> putData(String website, String uname, String password) {

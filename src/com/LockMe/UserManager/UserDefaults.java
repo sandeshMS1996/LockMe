@@ -4,7 +4,7 @@ import java.time.ZoneId;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public interface UserDefaults {
+public interface UserDefaults  {
 	boolean DEBUG = true;
 	String USER_DETAILS_FILENAME =  "UserDetails.txt";
 	

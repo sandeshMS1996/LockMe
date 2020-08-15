@@ -118,6 +118,13 @@ public class UserRegistractionAndLogin {
 		
 	}
 	}
+	
+	public static void deleteAccount(LoginData user) {
+		if(user.loginToken == false) return;
+		else {
+			SearchAndStoreUser.removeUser(user.getEmail(), true, true);
+		}
+	}
 
 }
 

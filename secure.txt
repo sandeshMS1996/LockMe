@@ -1,3 +1,0 @@
-sandesh@gmail.com,1234,2020-08-14T19:42:42.908+05:30[Asia/Calcutta]
-san@gmail.com,San@1234,2020-08-14T23:44:42.427+05:30[Asia/Calcutta]
-usha@gmail.com,Usha@1234,2020-08-14T22:30:25.578+05:30[Asia/Calcutta]
